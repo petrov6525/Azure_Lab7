@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "uivUIHq/qhRFqkx2J3J0/hkO/oklBWMKHbarYAFGFf6Sxhhdh1Jd15Pe9QpcNf1Ebv8HFT72OYrgmJ0b/DUqfA==",
+  "success": true,
+  "projectFilePath": "D:\\Study\\Azure\\Meet4_13_03_23\\Azure_Lab7\\Azure_Lab7\\Azure_Lab7.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\petro\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\petro\\.nuget\\packages\\npgsql\\7.0.2\\npgsql.7.0.2.nupkg.sha512",
+    "C:\\Users\\petro\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

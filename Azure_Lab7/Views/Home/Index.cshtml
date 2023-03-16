@@ -1,0 +1,141 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .my-flex{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+    .flex-div{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        row-gap:1rem;
+    }
+
+    .up{
+        align-self:start;
+    }
+</style>
+
+<div class="my-flex">
+    <div class="flex-div">
+        <form method="get" asp-action="AddBook">
+            <p>
+                <input type="text" name="BookName" placeholder="Book Name" required/>
+            </p>
+
+            <p>
+                <input type="text" name="AuthorFirstName" placeholder="Author FirstName" required/>
+            </p>
+
+            <p>
+                <input type="text" name="AuthorLastName" placeholder="Author LastName" required/>
+            </p>
+
+            <p>
+                <input type="text" name="PublishingName" placeholder="Publishing Name" required/>
+            </p>
+
+            <p>
+                <input type="text" name="DateOfPublish" placeholder="Date Of Publish (dd.mm.yyyy)"
+                       pattern="\d{2}\.\d{2}\.\d{4}"
+                       required/>
+            </p>
+
+            <p>
+                <label for="PublishingAddressId">Address</label>
+            </p>
+            
+            <p>
+                <select name="PublishingAddressId" id="PublishingAddressId">
+                    @if (ViewBag.addresses != null)
+                    {
+                        foreach (var address in ViewBag.addresses)
+                        {
+                            <option value="@address.Id">@address.Country, @address.City, @address.Street, @address.Building</option>
+                        }
+                    }
+                </select>
+            </p>
+
+            <button type="submit">Save</button>
+        </form>
+
+        <form method="get" asp-action="AddAddress">
+            <p>
+                <input type="text" name="Country" placeholder="Country" required />
+            </p>
+
+            <p>
+                <input type="text" name="City" placeholder="City" required />
+            </p>
+
+            <p>
+                <input type="text" name="Street" placeholder="Street" required />
+            </p>
+
+            <p>
+                <input type="text" name="Building" placeholder="Building" required />
+            </p>
+
+            <p>
+                <button type="submit">Save</button>
+            </p>
+        </form>
+    </div>
+
+    <div class="flex-div up">
+
+        <table>
+            <tr>
+                <th>Book Name</th>
+                <th>Author First Name</th>
+                <th>Author Last Name</th>
+                <th>Date Of Publish</th>
+                <th>Publishing Name</th>
+            </tr>
+            @if (ViewBag.books != null)
+            {
+                foreach (var book in ViewBag.books)
+                {
+                    <tr>
+                        <td>@book.BookName</td>
+                        <td>@book.AuthorFirstName</td>
+                        <td>@book.AuthorLastName</td>
+                        <td>@book.DateOfPublish</td>
+                        <td><a asp-action="GetAddressById" asp-route-id="@book.PublishingAddressId">@book.PublishingName</a></td>
+                    </tr>
+                }
+            }
+        </table>
+        
+    </div>
+
+    <div class="flex-div">
+        <table>
+            <tr>
+                <th>Country</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>Building</th>
+            </tr>
+
+            @if (ViewBag.address != null)
+            {
+                <tr>
+                    <td>@ViewBag.address.Country</td>
+                    <td>@ViewBag.address.City</td>
+                    <td>@ViewBag.address.Street</td>
+                    <td>@ViewBag.address.Building</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+
+</div>
